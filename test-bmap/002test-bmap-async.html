@@ -1,0 +1,51 @@
+<!--
+ * @Author: hansen
+ * @Date: 2023-04-11 10:32:28
+ * @LastEditors: hansen
+ * @LastEditTime: 2023-04-11 10:40:57
+ * @FilePath: \user-endd:\project\data-visualization\test-bmap\002test-bmap-async.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+      body,
+      html,
+      #allmap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        font-family: "微软雅黑";
+      }
+    </style>
+    <title>地图展示</title>
+    <!-- <script
+      type="text/javascript"
+      src="https://api.map.baidu.com/api?type=webgl&v=1.0&ak=tspuoVbe0g3Im4FujIPgG31KZlqY35E8"
+    ></script> -->
+  </head>
+  <body>
+    <div id="allmap"></div>
+    <script>
+      function init() {
+        const map = new BMapGL.Map("allmap");
+        const point = new BMapGL.Point(120.13, 30.27);
+        map.centerAndZoom(point, 12);
+        map.enableScrollWheelZoom(true);
+      }
+      function loadScript() {
+        /* 注意这边的异步加载 */
+        let script = document.createElement("script");
+        script.src = "https://api.map.baidu.com/api?type=webgl&v=1.0&ak=tspuoVbe0g3Im4FujIPgG31KZlqY35E8&callback=init";
+        document.body.appendChild(script);
+        
+      }
+      window.onload = loadScript;
+    </script>
+  </body>
+</html>
+
