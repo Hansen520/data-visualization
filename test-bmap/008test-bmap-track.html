@@ -1,0 +1,85 @@
+<!--
+ * @Author: hansen
+ * @Date: 2023-04-11 14:10:58
+ * @LastEditors: hansen
+ * @LastEditTime: 2023-04-11 14:20:09
+ * @FilePath: \user-endd:\project\data-visualization\test-bmap\008test-bmap-track.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+      body,
+      html,
+      #allmap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        font-family: "微软雅黑";
+      }
+    </style>
+    <title>地图展示</title>
+    <script
+      type="text/javascript"
+      src="https://api.map.baidu.com/api?type=webgl&v=1.0&ak=tspuoVbe0g3Im4FujIPgG31KZlqY35E8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://api.map.baidu.com/library/TrackAnimation/src/TrackAnimation_min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="allmap"></div>
+    <script>
+      const map = new BMapGL.Map("allmap");
+      map.centerAndZoom(point, 12); // 初始化地图,设置中心点坐标和地图级别
+      map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+      var path = [
+        {
+          lng: 120.13,
+          lat: 30.27,
+        },
+        {
+          lng: 118.321415963,
+          lat: 30.28,
+        },
+        {
+          lng: 120.13,
+          lat: 30.29,
+        },
+        {
+          lng: 119.555,
+          lat: 30.30,
+        },
+        {
+          lng: 120.13,
+          lat: 30.31,
+        },
+        {
+          lng: 120.13,
+          lat: 30.32,
+        },
+        {
+          lng: 118.13,
+          lat: 30.33,
+        },
+      ];
+      var point = [];
+      for (let i = 0; i < path.length; i++) {
+        point.push(new BMapGL.Point(path[i].lng, path[i].lat));
+      }
+      var pl = new BMapGL.Polyline(point);
+      var trackAni = new BMapGLLib.TrackAnimation(map, pl, {
+        overallView: true, // 动画完成后自动调整视野到总览
+        tilt: 30, // 轨迹播放的角度，默认为55
+        duration: 20000, // 动画持续时长，默认为10000，单位ms
+        delay: 3000, // 动画开始的延迟，默认0，单位ms
+      });
+      trackAni.start();
+    </script>
+  </body>
+</html>

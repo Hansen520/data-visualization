@@ -2,7 +2,7 @@
  * @Author: hansen
  * @Date: 2023-04-11 10:41:34
  * @LastEditors: hansen
- * @LastEditTime: 2023-04-11 11:05:13
+ * @LastEditTime: 2023-04-11 13:37:58
  * @FilePath: \user-endd:\project\data-visualization\test-bmap\003test-bmap-layer.html
 -->
 <!DOCTYPE html>
@@ -52,6 +52,7 @@
           width: 250,
           height: 100,
           title: "西湖",
+          offset: new BMapGL.Size(30, 0)
         };
         var infoWindow = new BMapGL.InfoWindow("内容", opts);
         map.openInfoWindow(infoWindow, point); // 打开信息窗口
