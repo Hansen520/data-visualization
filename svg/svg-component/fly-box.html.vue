@@ -1,3 +1,4 @@
+<!-- 仔细理解并且了解react与vue的转换 -->
 <template>
   <div class="imooc-fly-box" :ref="refName">
     <svg :width="width" :height="height">
